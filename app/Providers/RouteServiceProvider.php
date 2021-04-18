@@ -38,6 +38,7 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::pattern('id', '[0-9]+');
         Route::pattern('slug', '[a-zA-Z0-9-]+');
+        # Route::pattern('post', '[0-9]+');
 
         $this->configureRateLimiting();
 
