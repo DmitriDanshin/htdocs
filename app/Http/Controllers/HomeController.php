@@ -10,6 +10,7 @@ class HomeController extends Controller
 {
     public function index(): string
     {
+        dump(config('app.timezone'));
         return view('home', ['date' =>  date('Y-m-d h:i:s')]);
     }
 
