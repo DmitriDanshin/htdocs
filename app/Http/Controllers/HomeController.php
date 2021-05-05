@@ -11,12 +11,26 @@ class HomeController extends Controller
 {
     public function index()
     {
-        # $query = DB::insert("INSERT INTO posts (title, text) VALUES (:title, :text)", ['title'=>'статья 6','text' => 'Lorem ipsum 6',]);
+        #$data = DB::table('country')->get();
+        /*
+        $data = DB::table('city')
+            ->orderBy('population', 'DESC')
+            ->limit(10)
+            ->select(['ID', 'name'])
+            ->where([['id', '<=', 2], ['id', '!=', 1]])
+            ->get();
+        */
 
-        # DB::update('UPDATE posts SET updated_at = :updated WHERE updated_at IS NULL', [ 'updated' => NOW()]);
-        # DB::delete('DELETE FROM posts WHERE id > :from and id < :to ', ['from' => 3, 'to' => 7]);
-        # $posts = DB::select("SELECT * FROM posts WHERE id <= :id", ['id' => 2]);
-        # dump($posts);
+
+        $data = DB::table('city')
+            ->select('city.ID', 'city.Name as city_name', 'country.Code', 'country.Name as country_name')
+            ->limit(10)
+            ->join('country', 'city.CountryCode', '=', 'country.Code')
+            ->orderBy('city.ID')
+            ->get();
+
+
+        dd($data);
 
         return view('home', ['date' => date('Y-m-d h:i:s')]);
     }

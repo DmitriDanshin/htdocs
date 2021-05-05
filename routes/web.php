@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\{HomeController, PageController, PostController, Test\TestController};
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{HomeController, PostController, TestController};
+use Illuminate\{Support\Facades\Route};
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -14,4 +14,5 @@ Route::fallback(function () {
     return redirect()->route('home');
 });
 
+Route::get('/test', [TestController::class, 'show']);
 
