@@ -4,12 +4,8 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\City;
-use App\Models\Country;
 use App\Models\Post;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\DB;
+use App\Models\Tag;
 
 class HomeController extends Controller
 {
@@ -38,8 +34,6 @@ class HomeController extends Controller
         // dd($post);
 
 
-
-
         #$data = DB::table('country')->get();
         /*
         $data = DB::table('city')
@@ -60,7 +54,31 @@ class HomeController extends Controller
 
         // $post = Post::query()->find(6)->delete();
         // dd($post);
-        return view('welcome', ['date' => NOW()]);
+
+        $tag = Tag::query()->find(1);
+        dump($tag->posts);
+        dd();
+        $post = Post::query()->find(30);
+        dump($post->title);
+        foreach ($post->tags as $tag) {
+            dump($tag->title);
+        }
+        dd();
+        if (!empty($_GET)) {
+            Post::query()->create([
+                'content' => $_GET['content'],
+                'title' => $_GET['title'],
+            ]);
+
+        }
+
+        $posts = Post::query()->where('id', '>=', '0')->limit(2)->get();
+
+        return view('welcome', [
+            'date' => NOW(),
+            'posts' => $posts,
+
+        ]);
     }
 
     public function test(): string

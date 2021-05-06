@@ -15,5 +15,13 @@ class Post extends Model
     // public $timestamps = false;
     protected $fillable = ['content', 'title'];
 
+    public function rubric()
+    {
+        return $this->belongsTo(Rubric::class);
+    }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

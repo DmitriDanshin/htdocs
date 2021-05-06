@@ -396,6 +396,47 @@
 <body class="antialiased">
 <div class=""></div>
 <h1>Welcome</h1>
-<h2>{{$date}}</h2>
+<h2></h2>
+
+
+<div>
+
+    <div>
+
+
+
+    @foreach ($posts as $post)
+        <div style="border: #1a202c 1px solid">
+            <p style="padding-left: 15px">{{$post->title}}</p>
+            <p style="padding-left: 15px">{{$post->rubric->title}}</p>
+        </div>
+        <hr>
+    @endforeach
+
+
+    </div>
+    <form action="" method="get" style="background-color:#2d3748; padding-left: 20px; padding-bottom: 20px">
+        <div style="width: 350px">
+            Заголовок: <input type="text" name="title" style="width: 100%"> <br>
+            <textarea id="story" name="content" style="resize: none; width: 100%; margin-left: 0; margin-top: 5px;"
+                      rows="5" cols="33"></textarea>
+        </div>
+        <button type="submit" style="margin-top: 5px;">Ok</button>
+    </form>
+    <script>
+        function setTime() {
+            let today = new Date();
+            let date = today.getFullYear() + '-' + (today.getDate()) + '-' + (today.getMonth() + 1);
+            let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            document.querySelector('h2').innerHTML = date + ' ' + time;
+        }
+
+        setTime();
+        setInterval(() => {
+            setTime();
+        }, 1000)
+
+    </script>
+</div>
 </body>
 </html>
