@@ -3,17 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Models\Rubric;
+
 
 class PostController extends Controller
 {
     public function index($slur)
     {
-
         $post = Post::query()->find($slur);
-        if($post === null){
+        $rubrics = Rubric::all();
+
+        if ($post === null) {
             return view('errors.404');
         }
-        return view('posts.post', ['post' => $post]);
+        return view('posts.post', [
+            'post' => $post,
+            'rubrics' => $rubrics
+        ]);
     }
 }

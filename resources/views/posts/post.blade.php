@@ -1,30 +1,22 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="/css/app.css" rel="stylesheet">
-</head>
-<body>
+@extends('layouts.layout')
 
-<div class="col-sm-6 mt-2">
-    <div class="card border-dark">
-        <div class="card-body ">
-            <h5 class="card-title">{{$post->title}}</h5>
-            <p class="card-text"><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, autem cum deserunt dolor dolore expedita impedit ipsa necessitatibus nobis numquam odit optio pariatur placeat provident reprehenderit totam veniam veritatis vitae.</span>
-            </p>
-            <div class="card-footer text-muted border-dark">
-                {{$post->rubric->title}}
+@section('style')
+    <link href="/css/post.css" rel="stylesheet">
+@endsection
+
+@section('content')
+    <div class="mt-2">
+        <div class="card">
+            <div class="card-body ">
+                <h5 class="card-title">{{$post->title}}</h5>
+                <p class="card-text"><span class="test">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, autem cum deserunt dolor dolore expedita impedit ipsa necessitatibus nobis numquam odit optio pariatur placeat provident reprehenderit totam veniam veritatis vitae.</span>
+                </p>
+                <span class="text-muted">{{$post->rubric->title}}</span>
             </div>
         </div>
+        <a href="{{route('home')}}">Назад</a>
     </div>
-    <a href="{{url('/')}}">Назад</a>
-</div>
-
-
-<script src="/js/app.js"></script>
-</body>
-</html>
+@endsection
+@section('footer')
+    @parent
+@endsection
