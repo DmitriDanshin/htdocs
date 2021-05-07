@@ -1,18 +1,22 @@
 <?php
 
-use App\Http\Controllers\{HomeController, PostController, TestController};
+use App\Http\Controllers\{HomeController, PostController};
 use Illuminate\{Support\Facades\Route};
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
+Route::get('posts/{slur}', [PostController::class, 'index']);
 
-Route::resource('/posts', PostController::class, ['parameters'=> [
-    'posts'=>'id',
-]]);
+Route::get('/{slur}', function () {
+    return redirect('/home');
+});
+
+Route::get('/', function () {
+    return redirect('/home');
+});
 
 Route::fallback(function () {
     abort(404, 'Error');
-    return redirect()->route('home');
+    return redirect()->route('/home');
 });
 
-Route::get('/test', [TestController::class, 'show']);
 
