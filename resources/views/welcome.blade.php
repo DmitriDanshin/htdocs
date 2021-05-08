@@ -1,6 +1,7 @@
 @extends('layouts.layout')
-
+@section('title') Main page @endsection
 @section('content')
+    {!! $header !!}
     <div class="row">
         @foreach ($posts as $post)
             <div class="col-sm-6 mt-2">

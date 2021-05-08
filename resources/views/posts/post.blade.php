@@ -1,8 +1,5 @@
 @extends('layouts.layout')
-
-@section('style')
-    <link href="/css/post.css" rel="stylesheet">
-@endsection
+@section('title') {{$post -> title}} @endsection
 
 @section('content')
     <div class="mt-2">

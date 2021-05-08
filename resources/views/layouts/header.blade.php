@@ -18,6 +18,7 @@
                     </li>
                 @endforeach
 
+
                 <a class="nav-link" href="{{route('about')}}">О нас</a>
             </ul>
             <form class="form-inline my-2 my-lg-0">

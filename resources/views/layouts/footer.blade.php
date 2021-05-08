@@ -5,7 +5,7 @@
                 <a href="#">Вверх</a>
             </p>
             <p>Lorem ipsum dolor sit amet!</p>
-            <p>{{now()->year}}</p>
+            <p>{{date('Y')}}</p>
         </div>
 
     </footer>
